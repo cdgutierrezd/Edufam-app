@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
@@ -24,6 +25,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import com.cdgutierrezd.edufam.R
+import com.cdgutierrezd.edufam.ui.theme.BlueButton
 import kotlinx.serialization.Serializable
 
 @Serializable
@@ -75,14 +77,10 @@ fun Login(onLoginSuccess: () -> Unit) {
         )
         Spacer(modifier = Modifier.height(24.dp))
         Button(
-            onClick = {
-                if (username == "admin" && password == "1234") {
-                    onLoginSuccess()
-                } else {
-                    println("Not login")
-                }
-            },
-            modifier = Modifier.fillMaxWidth()
+            onClick = {onLoginSuccess()},
+            modifier = Modifier.fillMaxWidth(),
+            colors = ButtonDefaults.buttonColors(
+                containerColor = BlueButton)
         ) {
             Text("Login")
         }
