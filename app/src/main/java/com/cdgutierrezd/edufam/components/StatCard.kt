@@ -1,7 +1,9 @@
-package com.cdgutierrezd.edufam.screens.login
+package com.cdgutierrezd.edufam.components
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -24,36 +26,53 @@ import com.cdgutierrezd.edufam.R
 import com.cdgutierrezd.edufam.ui.theme.White
 
 @Composable
-public fun StatCard(
+fun StatCard(
     label:String,
     count: String,
-    icon: Int= R.drawable.ic_01
+    icon: Int= R.drawable.ic_01,
+    modifier: Modifier
 ){
     Card(
-        modifier = Modifier.fillMaxWidth(),
+        modifier = modifier,
         colors = CardDefaults.cardColors(containerColor = Color(White.value))
     ) {
-        Row(
+        Row( // usamos Row para colocar el ícono al lado del texto
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(16.dp),
+                .padding(12.dp),
             verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.Center
+            horizontalArrangement = Arrangement.spacedBy(12.dp)
         )
         {
-            Image(
-                painter = painterResource(icon),
-                contentDescription = "avatar",
-                modifier = Modifier.size(60.dp).clip(CircleShape)
-            )
+            Box(
+                modifier = Modifier
+                    .size(48.dp)
+                    .clip(CircleShape)
+                    .background(Color(0xFFD6EAF8)),
+                contentAlignment = Alignment.Center
+            ) {
+                Image(
+                    painter = painterResource(R.drawable.ic_01),
+                    contentDescription = "avatar",
+                    modifier = Modifier
+                        .size(60.dp)
+                        .clip(CircleShape)
+                )
+            }
             Column(
-                modifier = Modifier.padding(horizontal = 15.dp),
+                modifier = Modifier.weight(1f),
+                verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                Text(label, style = MaterialTheme.typography.bodyMedium)
                 Text(
-                    count,
-                    style = MaterialTheme.typography.displayMedium.copy(fontWeight = FontWeight.Bold)
+                    text = label,
+                    style = MaterialTheme.typography.labelMedium,
+                    color = Color.Gray
+                )
+                Text(
+                    text = count,
+                    style = MaterialTheme.typography.headlineMedium,
+                    fontWeight = FontWeight.Bold
                 )
             }
         }
