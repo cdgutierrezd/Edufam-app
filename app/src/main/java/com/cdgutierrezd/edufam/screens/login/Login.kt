@@ -53,8 +53,8 @@ fun Login(onLoginSuccess: () -> Unit) {
         )
         Spacer(modifier = Modifier.height(24.dp))
 
-        Text(text = "Welcome!", style = MaterialTheme.typography.headlineSmall)
-        Text(text = "Sign in to continue", style = MaterialTheme.typography.bodyLarge)
+        Text(text = "¡Bienvenido!", style = MaterialTheme.typography.headlineSmall)
+        Text(text = "Inicia sesión para continuar", style = MaterialTheme.typography.bodyLarge)
         Spacer(modifier = Modifier.height(24.dp))
 
         Text(text = "Login", style = MaterialTheme.typography.headlineSmall)
@@ -62,7 +62,7 @@ fun Login(onLoginSuccess: () -> Unit) {
         OutlinedTextField(
             value = username,
             onValueChange = { username = it },
-            label = { Text("User") },
+            label = { Text("Usuario") },
             singleLine = true,
             modifier = Modifier.fillMaxWidth()
         )
@@ -70,7 +70,7 @@ fun Login(onLoginSuccess: () -> Unit) {
         OutlinedTextField(
             value = password,
             onValueChange = { password = it },
-            label = { Text("Password") },
+            label = { Text("Contraseña") },
             singleLine = true,
             visualTransformation = PasswordVisualTransformation(),
             modifier = Modifier.fillMaxWidth()
