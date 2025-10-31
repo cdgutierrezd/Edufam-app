@@ -29,7 +29,7 @@ import com.cdgutierrezd.edufam.ui.theme.White
 fun StatCard(
     label:String,
     count: String,
-    icon: Int= R.drawable.ic_01,
+    icon: Int,
     modifier: Modifier
 ){
     Card(
@@ -52,7 +52,7 @@ fun StatCard(
                 contentAlignment = Alignment.Center
             ) {
                 Image(
-                    painter = painterResource(R.drawable.ic_01),
+                    painter = painterResource(icon),
                     contentDescription = "avatar",
                     modifier = Modifier
                         .size(60.dp)

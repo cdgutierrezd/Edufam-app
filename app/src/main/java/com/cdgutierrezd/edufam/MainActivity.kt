@@ -38,7 +38,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            EdufamTheme(darkTheme = false,dynamicColor = false ) {          // <- tema con tu color
+            EdufamTheme(darkTheme = false,dynamicColor = false ) {
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background

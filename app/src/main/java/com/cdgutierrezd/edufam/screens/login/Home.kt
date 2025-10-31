@@ -15,7 +15,9 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBars
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
@@ -35,7 +37,10 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.cdgutierrezd.edufam.R
+import com.cdgutierrezd.edufam.components.GradesListScreen
+import com.cdgutierrezd.edufam.components.ProgressCard
 import com.cdgutierrezd.edufam.components.StatCard
+import com.cdgutierrezd.edufam.components.profileCard
 import com.cdgutierrezd.edufam.ui.theme.BlueBlackGround
 import com.cdgutierrezd.edufam.ui.theme.BlueButton
 import com.cdgutierrezd.edufam.ui.theme.White
@@ -47,6 +52,7 @@ data object Home
 @Preview
 @Composable
 fun Home() {
+    val scrollState = rememberScrollState()
     Scaffold(
         topBar = {
             Row(
@@ -59,7 +65,7 @@ fun Home() {
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Column {
-                    Text(text = "Hello", style = MaterialTheme.typography.bodyMedium)
+                    Text(text = "Hola", style = MaterialTheme.typography.bodyMedium)
                     Text(
                         text = "Familia Perez",
                         style = MaterialTheme.typography.bodyLarge,
@@ -86,24 +92,11 @@ fun Home() {
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(32.dp),
+                    .padding(32.dp)
+                    .verticalScroll(scrollState),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                Image(
-                    painter = painterResource(id = R.drawable.avatar_01),
-                    contentDescription = "avatar",
-                    modifier = Modifier
-                        .size(150.dp)
-                        .clip(CircleShape)
-                        .align(Alignment.CenterHorizontally)
-                )
-                Text(
-                    text = "Pepito Perez",
-                    style = MaterialTheme.typography.displayMedium.copy(fontWeight = FontWeight.Bold),
-                    maxLines = 1,
-                    overflow = TextOverflow.Visible,
-                    modifier = Modifier.align(Alignment.CenterHorizontally)
-                )
+                profileCard("Pepito Perez",R.drawable.avatar_01)
                 Spacer(modifier = Modifier.height(24.dp))
                 Card(
                     modifier = Modifier.fillMaxWidth(),
@@ -143,9 +136,9 @@ fun Home() {
                     horizontalArrangement = Arrangement.spacedBy(12.dp)
                 ) {
                     /* ---------  Card 1  --------- */
-                    StatCard("En riesgo", "2", modifier = Modifier.weight(1f))
+                    StatCard("Aprobadas", "3", modifier = Modifier.weight(1f), icon =  R.drawable.ic_02)
                     /* ---------  Card 2  --------- */
-                    StatCard("En riesgo", "2", modifier = Modifier.weight(1f))
+                    StatCard("En riesgo", "2", modifier = Modifier.weight(1f),icon =  R.drawable.ic_03)
                 }
                 Spacer(modifier = Modifier.height(24.dp))
                 Button(
@@ -158,6 +151,9 @@ fun Home() {
                 ){
                     Text(text = "Ver ultima actividad", fontSize = 20.sp)
                 }
+                Spacer(modifier = Modifier.height(24.dp))
+                Text(text = "Desempeño por matería", fontWeight = FontWeight.Bold, fontSize = 20.sp)
+                GradesListScreen()
             }
         }
     }
